@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portal UT Llano Alianza</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+
+  <!-- Pantalla 1: inicio de sesión -->
+  <section id="vista-login" class="vista">
+    <div class="login-caja">
+      <h1>UT Llano Alianza</h1>
+      <p class="sub">Portal de procesos</p>
+      <form id="form-login">
+        <label for="usuario">Usuario</label>
+        <input id="usuario" autocomplete="username" required>
+        <label for="clave">Contraseña</label>
+        <input id="clave" type="password" autocomplete="current-password" required>
+        <p id="error-login" class="error" hidden></p>
+        <button type="submit">Entrar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Pantallas con sesión iniciada -->
+  <section id="vista-app" class="vista" hidden>
+    <header class="barra">
+      <span class="marca">UT Llano Alianza</span>
+      <span id="nombre-usuario" class="usuario"></span>
+      <button id="btn-salir" class="btn-secundario">Cerrar sesión</button>
+    </header>
+
+    <main>
+      <p id="aviso" class="aviso" hidden></p>
+
+      <!-- Pantalla 2: actividades pendientes -->
+      <div id="vista-pendientes">
+        <div id="zona-iniciar"></div>
+        <div id="zona-admin" hidden>
+          <div class="titulo-fila">
+            <h2>Procesos en curso <span id="contador-admin" class="contador">0</span></h2>
+          </div>
+          <p class="ayuda">Solo el administrador ve esta lista. Cancelar un proceso borra todas sus tareas pendientes.</p>
+          <div id="lista-procesos"></div>
+          <hr class="separador">
+        </div>
+        <div class="titulo-fila">
+          <h2>Mis actividades pendientes <span id="contador" class="contador">0</span></h2>
+          <button id="btn-actualizar" class="btn-secundario">Actualizar</button>
+        </div>
+        <p class="ayuda">Aquí solo aparecen las tareas de tu rol. La lista se actualiza sola cada 10 segundos.</p>
+        <div id="lista-pendientes"></div>
+      </div>
+
+      <!-- Pantalla 3: formulario de una tarea o de inicio -->
+      <div id="vista-tarea" hidden>
+        <button id="btn-volver" class="btn-secundario">&larr; Volver a pendientes</button>
+        <div class="tarjeta">
+          <p id="tarea-proceso" class="etiqueta"></p>
+          <form id="form-tarea" novalidate></form>
+          <div id="zona-registros" class="zona-registros" hidden>
+            <h3>Datos guardados del caso</h3>
+            <p class="ayuda">Vienen del servicio de registros (base de datos del negocio).</p>
+            <div id="datos-registros"></div>
+          </div>
+          <div id="zona-cancelar-tarea" class="zona-cancelar" hidden>
+            <button id="btn-cancelar-tarea" class="btn-peligro" type="button">Cancelar este proceso</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

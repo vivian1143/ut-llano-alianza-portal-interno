@@ -1,0 +1,11 @@
+# Portal interno de UT Llano Alianza: aplicación aparte que usa la API REST de Camunda
+server:
+  port: ${PUERTO:8081}
+
+# Dirección de la API REST de Camunda (el motor corre en el puerto 8080)
+camunda:
+  rest-url: ${CAMUNDA_URL:http://localhost:8080/engine-rest}
+
+# Servicio de registros (base de datos del negocio, puerto 8082)
+registros:
+  url: ${REGISTROS_URL:http://localhost:8082/api}
